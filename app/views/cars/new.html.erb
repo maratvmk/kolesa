@@ -22,8 +22,8 @@
 	<%= f.select :year, 1980..Time.now.year, selected: 2000 %>
 	<br/>
 
-	<%= f.fields_for :car_image do |car_image| %>
-		<%= car_image.file_field :image, multiple: true %>
+	<%= f.fields_for :car_images, @car.car_images.build do |forma| %>
+		<%= forma.file_field :image, multiple: true %>
 	<% end %>
 	<br/><br/>
 

@@ -37,9 +37,9 @@ gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 
 gem 'devise'
-gem 'carrierwave'
 
-gem 'jquery-fileupload-rails'
+gem 'carrierwave'
+gem 'rmagick'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
