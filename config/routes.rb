@@ -9,8 +9,10 @@ Kolesa::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'cars#index', as: :cars
 
-  get "cars/new"
+  get  "cars/new"
   post "cars/create", as: :car_create
+  get  "cars/models"
+  get  "cars/:id" => "cars#show"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

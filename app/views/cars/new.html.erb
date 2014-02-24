@@ -1,31 +1,118 @@
-<%= @car.inspect %>
+<h3>Добавить авто на продажу</h3>
+<div class="row">
 <%= form_for @car, url: car_create_path, html: { multipart: true } do |f| %>
-	<%= f.label :city_id %>
-	<%= f.collection_select :city_id, City.all, :id, :name %>
+<div class="span12">
+	<div class="row">
+		<div class="span3">
+			<%= f.label :city_id %>
+			<%= f.collection_select :city_id, City.all, :id, :name %>
+		</div>
+	</div>
 
-	<%= f.label :brand_id %>
-	<%= f.collection_select :brand_id, Brand.all, :id, :name %>
+	<div class="row">
+		<div class="span3">
+			<%= f.label :brand_id %>
+			<%= f.collection_select :brand_id, Brand.all, :id, :name %>
+		</div>
 
-	<%= f.label :model_id %>
-	<%= f.select :model_id, "", {}, disabled: true %>
+		<div class="span3">
+			<%= f.label :model_id %>
+			<%= f.select :model_id, "", {}, disabled: true %>
+		</div>
+	</div>
 
-	<%= f.label :price %>
-	<%= f.text_field :price %>
+	<div class="row">
+		<div class="span3">
+			<%= f.label :year %>
+			<%= f.select :year, (1985..Time.now.year).to_a.reverse, selected: 2000 %>
+		</div>
 
-	<%= f.label :transmission %>
-	<%= f.select :transmission, ["", "АКПП", "механика", "типтроник"] %>
+		<div class="span3">
+			<%= f.label :price %>
+			<%= f.text_field :price %>			
+		</div>
+	</div>
 
-	<%= f.label :wheel %>
-	<%= f.select :wheel, ["левый", "правый"] %>
+	<div class="row">
+		<div class="span3">
+			<%= f.label :transmission %>
+			<%= f.select :transmission, ["", "АКПП", "механика", "типтроник"] %>			
+		</div>
 
-	<%= f.label :year %>
-	<%= f.select :year, 1980..Time.now.year, selected: 2000 %>
+		<div class="span3">
+			<%= f.label :fuel %>
+			<%= f.select :fuel, ["бензин", "дизель", "газ"] %>			
+		</div>
+
+		<div class="span3">
+			<%= f.label :volume %>
+			<%= f.text_field :volume %>	
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span3">
+			<%= f.label :color %>
+			<%= f.collection_select :color, Color.all, :id, :name %>
+		</div>
+
+		<div class="span3">
+			<%= f.label :body %>
+			<%= f.collection_select :body, Body.all, :id, :name %>			
+		</div>
+
+		<div class="span3">
+			<%= f.label :state %>
+			<%= f.select :state, ["с пробегом", "без пробега, новый", "на ходу", "аварийное"] %>
+		</div>
+	</div>
+
+	<div class="row">
+
+		<div class="span3">
+			<%= f.label :milage %>
+			<%= f.text_field :milage %>	
+		</div>
+
+		<div class="span3">
+			<%= f.label :wheel %>
+			<%= f.select :wheel, ["левый", "правый"] %>	
+		</div>
+
+		<div class="span3">
+			<%= f.label :customs %>
+			<%= f.check_box :customs %>
+		</div>
+	</div>
+
+	<div class="row">				
+		<div class="span3">
+			<%= f.label :drive %>
+			<%= f.select :drive, ["передний", "задний", "полный"] %>	
+		</div>
+
+		<div class="span3">
+			<%= f.label :phone %>
+			<%= f.text_field :phone %>	
+		</div>
+
+		<div class="span3">
+			<%= f.label :car_images %>
+			<%= f.fields_for :car_images, @car.car_images.build do |forma| %>
+				<%= forma.file_field :image, multiple: true %>
+			<% end %>			
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span6">
+			<%= f.label :description %>
+			<%= f.text_area :description, rows: 5, style: "width: 510px" %>
+		</div>
+	</div>
+
 	<br/>
-
-	<%= f.fields_for :car_images, @car.car_images.build do |forma| %>
-		<%= forma.file_field :image, multiple: true %>
-	<% end %>
-	<br/><br/>
-
 	<%= f.submit "Добавить авто" %>
+</div>
 <% end %>
+</div><br/><br/>

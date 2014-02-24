@@ -3,7 +3,11 @@ class CarsController < ApplicationController
   end
 
   def new
-  	@car = Car.new
+  	if current_user 
+  		@car = Car.new
+  	else
+  		redirect_to cars_path, notice: 'Чтобы продать авто войдите в систему'
+  	end
   end
 
   def create
@@ -19,9 +23,20 @@ class CarsController < ApplicationController
   	redirect_to cars_path
   end
 
+  def show
+  	@car = Car.find(params[:id])
+  end
+
+  # ajax 
+  def models
+  	@models = Model.where(brand_id: params[:brand_id])
+  	render layout: false
+  end
+
   private
   def car_params
-  	params.require(:car).permit(:id, :city_id, :brand_id, :price, :transmission, :wheel, :year, car_images_attributes: [:id, :car_id, :image, :_destroy] )
+  	params.require(:car).permit(:id, :city_id, :brand_id, :price, :transmission, :wheel, :year, 
+  		car_images_attributes: [:id, :car_id, :image, :_destroy] )
   end
 
 end
