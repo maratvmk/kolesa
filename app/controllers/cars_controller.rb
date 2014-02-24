@@ -12,11 +12,13 @@ class CarsController < ApplicationController
 
   def create
   	# little hack to save multiple images with nested_attrs
-  	tmp = []
-	params[:car][:car_images_attributes]['0'][:image].each do |f|
-  		tmp << { image: f }
+  	if params[:car][:car_images_attributes]
+	  	tmp = []
+		params[:car][:car_images_attributes]['0'][:image].each do |f|
+	  		tmp << { image: f }
+		end
+		params[:car][:car_images_attributes] = tmp
 	end
-	params[:car][:car_images_attributes] = tmp
 
 	@car = Car.new(car_params)
   	@car.save
@@ -35,7 +37,8 @@ class CarsController < ApplicationController
 
   private
   def car_params
-  	params.require(:car).permit(:id, :city_id, :brand_id, :price, :transmission, :wheel, :year, 
+  	params.require(:car).permit(:id, :city_id, :brand_id, :model_id, :price, :transmission, :wheel, :year, 
+  		:fuel, :color_id, :body_id, :milage, :volume, :drive, :phone, :description, :state, :customs,
   		car_images_attributes: [:id, :car_id, :image, :_destroy] )
   end
 

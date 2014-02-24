@@ -52,13 +52,13 @@
 
 	<div class="row">
 		<div class="span3">
-			<%= f.label :color %>
-			<%= f.collection_select :color, Color.all, :id, :name %>
+			<%= f.label :color_id %>
+			<%= f.collection_select :color_id, Color.all, :id, :name %>
 		</div>
 
 		<div class="span3">
-			<%= f.label :body %>
-			<%= f.collection_select :body, Body.all, :id, :name %>			
+			<%= f.label :body_id %>
+			<%= f.collection_select :body_id, Body.all, :id, :name %>			
 		</div>
 
 		<div class="span3">

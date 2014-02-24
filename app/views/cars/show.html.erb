@@ -1,1 +1,62 @@
 <%= @car.inspect %>
+<div class="row">
+	<div class="span12">
+		<h3><%= @car.brand.name %> <%= @car.model.name %> <%= @car.year %> года 
+			<span style="color:#bbbbbb">за</span>
+			<span style="color:#009900"><%= @car.price %> $</span>
+		</h3>
+	</div>
+</div>
+<div class="row">
+	<div class="span3">
+		<div style="line-height: 32px;">
+			<div class="row">
+				<div class="span1" style="color: #666666">Регион</div>
+				<div class="span2"><%= @car.city.name %></div>
+			</div>
+			<div class="row">
+				<div class="span1" style="color: #666666">Кузов</div>
+				<div class="span2"><%= @car.body.name %></div>
+			</div>
+			<div class="row">
+				<div class="span1" style="color: #666666">Двигатель</div>
+				<div class="span2"><%= @car.volume %>л (<%= @car.fuel %>)</div>
+			</div>
+			<div class="row">
+				<div class="span1" style="color: #666666">КПП</div>
+				<div class="span2"><%= @car.transmission %></div>
+			</div>
+			<div class="row">
+				<div class="span1" style="color: #666666">Пробег</div>
+				<div class="span2"><%= @car.milage %></div>
+			</div>
+			<div class="row">
+				<div class="span1" style="color: #666666">Состояние</div>
+				<div class="span2"><%= @car.state %></div>
+			</div>
+			<div class="row">
+				<div class="span1" style="color: #666666">Руль</div>
+				<div class="span2"><%= @car.wheel %></div>
+			</div>
+			<div class="row">
+				<div class="span1" style="color: #666666">Привод</div>
+				<div class="span2"><%= @car.drive %></div>
+			</div>
+			<div class="row">
+				<div class="span1" style="color: #666666">Цвет</div>
+				<div class="span2"><%= @car.color.name %></div>
+			</div>
+			<div class="row">
+				<div class="span1" style="color: #666666;">Растаможен?</div>
+				<div class="span2"><%= @car.customs ? "Да" : "Нет" %></div>
+			</div>
+		</div><br/>
+		<div class="row" style="line">
+			<div class="span3"><%= @car.description %></div>
+		</div>
+	</div>
+	<div class="span4">
+		<%= image_tag @car.car_images[0].image_url %>
+	</div>
+
+</div>
