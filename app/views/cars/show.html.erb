@@ -55,8 +55,24 @@
 			<div class="span3"><%= @car.description %></div>
 		</div>
 	</div>
-	<div class="span4">
-		<%= image_tag @car.car_images[0].image_url %>
+	<div class="span5" id="gallery">
+		<a href="<%= @car.car_images[0].image_url(:big) %>" data-lightbox='images'>
+			<%= image_tag @car.car_images.first.image_url(:big), style: "padding-bottom: 9px;" %>
+		</a>
+		
+		<a href="<%= @car.car_images[0].image_url(:big) %>">
+			<%= image_tag @car.car_images[0].image_url(:thumb), class: "thumb-image" %>
+		</a>		
+		<% @car.car_images[1..-1].each do |img| %>
+			<a href="<%= img.image_url(:big) %>" data-lightbox='images'></a>
+			<a href="<%= img.image_url(:big) %>">
+				<%= image_tag img.image_url(:thumb), class: "thumb-image" %>
+			</a>
+		<% end %>
 	</div>
-
 </div>
+<div style="height:100px;"></div>
+
+<% content_for :javascript do %>
+	<script type="text/javascript" src="/assets/lightbox.js"></script>
+<% end %>

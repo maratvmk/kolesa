@@ -1,2 +1,88 @@
-<h1>Cars#index</h1>
-<p>Find me in app/views/cars/index.html.erb</p>
+<h1>КОЛЁСА</h1>
+
+<br>
+
+<div class="row" style="background-color: #FAE8BB; padding: 20px;">
+	<div class="span7">
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						<div id="brand">
+							<strong><a href="" style="border-bottom: 1px dotted #0066CC; color:#0066CC;">Марка</a></strong>
+							<% Brand.all.each do |b| %>
+								<span data-id=<%= b.id %> 
+								style="margin: 7px; border-bottom: 1px dotted #0066CC; color: #0066CC;">
+									<%= b.name %>
+								</span>
+							<% end %>
+						</div><br/><br/>
+						<div id="model">
+							<strong><a href="" style="border-bottom: 1px dotted #0066CC; color:#0066CC;">Модель</a></strong>
+							<div style="display: inline;"></div>
+						</div><br/><br/>
+						<div id="city">
+							<strong><a href="" style="border-bottom: 1px dotted #0066CC; color:#0066CC;">Где искать</a></strong>
+							<% City.all.each do |c| %>
+								<span data-id=<%= c.id %> style="margin: 7px; display:inline; border-bottom: 1px dotted #0066CC; color:#0066CC;" >
+									<%= c.name %>
+								</span>
+							<% end %>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="span4">
+		<%= search_form_for @search do |f| %>
+		  <%= f.hidden_field :brand_id_eq %>
+		  <%= f.hidden_field :model_id_eq %>
+		  <%= f.hidden_field :city_id_eq %>
+
+		  <%= f.label :price %>
+		  <%= f.text_field :price_gteq, style: "width:60px;height:14px;" %> —
+		  <%= f.text_field :price_lteq, style: "width:60px;height:14px;" %> $
+
+		  <%= f.label :year %>
+		  <%= f.text_field :year_gteq, style: "width:50px;height:14px;" %> —
+		  <%= f.text_field :year_lteq, style: "width:50px;height:14px;" %>
+		  <br/><br/><br/>
+		  <%= f.submit 'Найти' %>
+		<% end %>		
+	</div>
+</div><br/>
+
+<div class="row">
+	<% @cars.each do |car| %>
+	<div class="span2">
+		<a href=<%= car_path(car) %>>
+			<%= image_tag car.car_images[0].image_url(:small) %>
+		</a>
+	</div>
+	<div class="span6">
+		<p><b>
+			<a href=<%= car_path(car) %>>
+				<%= car.brand.name %> <%= car.model.name %> 
+			</a>
+			<span style="color:#bbbbbb">за</span>
+			<span style="color:#009900"><%= car.price %> $</span></b>
+			<br/>
+			<%= car.year %> г. 
+			<br/>
+		
+			<%= car.body.name %>, 
+			<%= car.volume %>л, 
+			<%= car.fuel %>, 
+			КПП <%= car.transmission %>, 
+			<%= car.state %>, 
+			<%= car.milage %> км, 
+			<%= car.color.name %>, 
+			<%= car.description %>
+			<br/>
+			<%= car.city.name %>
+		</p>
+	</div>
+	<% end %>
+</div>
+<div style="height:80px;"></div>

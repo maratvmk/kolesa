@@ -1,3 +1,3 @@
 class Brand < ActiveRecord::Base
-	has_many :models
+	mount_uploader :symbol, SymbolUploader
 end

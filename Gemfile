@@ -37,6 +37,7 @@ gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 
 gem 'devise'
+gem 'ransack'
 
 gem 'carrierwave'
 gem 'rmagick'

@@ -1,5 +1,7 @@
 class CarsController < ApplicationController
   def index
+  	@search = Car.search(params[:q])
+  	@cars = @search.result
   end
 
   def new
@@ -21,8 +23,17 @@ class CarsController < ApplicationController
 	end
 
 	@car = Car.new(car_params)
-  	@car.save
-  	redirect_to cars_path
+  	if params[:car][:car_images_attributes]
+  		if @car.save
+  			redirect_to @car, success: 'ваше объявление успешно добавлен =)'
+		else
+			render 'new'
+		end
+  	else
+  		flash[:error] = 'Пожалуйста добавьте фотки вашего авто и заполните поля с *:'	
+  		render 'new'
+  	end
+  	
   end
 
   def show
@@ -32,6 +43,7 @@ class CarsController < ApplicationController
   # ajax 
   def models
   	@models = Model.where(brand_id: params[:brand_id])
+  	@tag = params[:span]
   	render layout: false
   end
 

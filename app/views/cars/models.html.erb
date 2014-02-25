@@ -1,5 +1,13 @@
-<% @models.each do |m| %>
-	<option value=<%= m.id %>>
-		<%= m.name %>
-	</option>
+<% if @tag %>
+	<% @models.each do |m| %>
+		<option value=<%= m.id %>>
+			<%= m.name %>
+		</option>
+	<% end %>
+<% else %>
+	<% @models.each do |m| %>
+		<span data-id=<%= m.id %> style="margin: 7px; border-bottom: 1px dotted #0066CC; color: #0066CC;">
+			<%= m.name %>
+		</span>
+	<% end %>
 <% end %>
