@@ -1,4 +1,7 @@
-<% if @tag %>
+<script type="text/javascript">
+	alert("<%= @tag %>");
+</script>
+<% if @tag.blank? %>
 	<% @models.each do |m| %>
 		<option value=<%= m.id %>>
 			<%= m.name %>

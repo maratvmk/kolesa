@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# http://secret-escarpment-8644.herokuapp.com/
 gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
