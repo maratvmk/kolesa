@@ -38,5 +38,18 @@ ready = ->
 		$(this).css('background-color', '#FFCC33').css('border', 'none').css('padding', '4px')
 		$('#q_city_id_eq').val $(this).attr('data-id')
 
+	# set search values(city, brand, model)
+	$('#city span[data-id=' + $('#q_city_id_eq').val() + ']').css('background-color', '#FFCC33').css('border', 'none').css('padding', '4px')
+	$('#brand span[data-id=' + $('#q_brand_id_eq').val() + ']').css('background-color', '#FFCC33').css('border', 'none').css('padding', '4px')
+
+	if $('#q_brand_id_eq').val()
+		$.ajax
+		  url: "/cars/models"
+		  data: { brand_id: $('#q_brand_id_eq').val(), tag: 'span' }
+		  success: (data) ->
+		    $('#model div').html(data)
+		  complete: ->
+		  	$('#model span[data-id=' + $('#q_model_id_eq').val() + ']').css('background-color', '#FFCC33').css('border', 'none').css('padding', '4px')
+
 $(document).ready(ready)
 $(document).on('page:load', ready) 

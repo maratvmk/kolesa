@@ -1,4 +1,4 @@
-<%= @car.inspect %>
+
 <div class="row">
 	<div class="span12">
 		<h3><%= @car.brand.name %> <%= @car.model.name %> <%= @car.year %> года 
@@ -61,12 +61,12 @@
 		</a>
 		
 		<a href="<%= @car.car_images[0].image_url(:big) %>">
-			<%= image_tag @car.car_images[0].image_url(:thumb), class: "thumb-image" %>
+			<%= image_tag @car.car_images[0].image_url(:thumb), class: "thumb-image", style: "margin-bottom:4px" %>
 		</a>		
 		<% @car.car_images[1..-1].each do |img| %>
 			<a href="<%= img.image_url(:big) %>" data-lightbox='images'></a>
 			<a href="<%= img.image_url(:big) %>">
-				<%= image_tag img.image_url(:thumb), class: "thumb-image" %>
+				<%= image_tag img.image_url(:thumb), class: "thumb-image", style: "margin-bottom:4px" %>
 			</a>
 		<% end %>
 	</div>

@@ -46,6 +46,7 @@ gem 'twitter-bootstrap-rails'
 
 gem 'devise'
 gem 'ransack'
+gem 'will_paginate'
 
 gem 'carrierwave'
 gem 'rmagick'

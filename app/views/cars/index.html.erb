@@ -53,36 +53,37 @@
 	</div>
 </div><br/>
 
-<div class="row">
-	<% @cars.each do |car| %>
-	<div class="span2">
-		<a href=<%= car_path(car) %>>
-			<%= image_tag car.car_images[0].image_url(:small) %>
-		</a>
-	</div>
-	<div class="span6">
-		<p><b>
+<% @cars.each do |car| %>
+<div class="row" style="margin-bottom: 15px;">
+		<div class="span2">
 			<a href=<%= car_path(car) %>>
-				<%= car.brand.name %> <%= car.model.name %> 
+				<%= image_tag car.car_images[0].image_url(:small) %>
 			</a>
-			<span style="color:#bbbbbb">за</span>
-			<span style="color:#009900"><%= car.price %> $</span></b>
-			<br/>
-			<%= car.year %> г. 
-			<br/>
-		
-			<%= car.body.name %>, 
-			<%= car.volume %>л, 
-			<%= car.fuel %>, 
-			КПП <%= car.transmission %>, 
-			<%= car.state %>, 
-			<%= car.milage %> км, 
-			<%= car.color.name %>, 
-			<%= car.description %>
-			<br/>
-			<%= car.city.name %>
-		</p>
-	</div>
-	<% end %>
+		</div>
+		<div class="span6">
+			<p><b>
+				<a href=<%= car_path(car) %>><%= car.brand.name %> <%= car.model.name %></a>
+				<span style="color:#bbbbbb">&nbsp;за&nbsp;</span>
+				<span style="color:#009900"><%= car.price %> $</span></b>
+				<br/>
+				<%= car.year %> г. 
+				<br/>
+			
+				<%= car.body.name %>, 
+				<%= car.volume %>л, 
+				<%= car.fuel %>, 
+				КПП <%= car.transmission %>, 
+				<%= car.state %>, 
+				<%= car.milage %> км, 
+				<%= car.color.name %>, 
+				<%= car.description %>
+				<br/>
+				<%= car.city.name %>
+			</p>
+		</div>
 </div>
+<% end %>
+
+<%= will_paginate(@cars) %>
+
 <div style="height:80px;"></div>
