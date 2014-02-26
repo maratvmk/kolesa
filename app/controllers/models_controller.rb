@@ -19,35 +19,24 @@ class ModelsController < ApplicationController
   def create
     @model = Model.new(model_params)
 
-    respond_to do |format|
-      if @model.save
-        format.html { redirect_to @model, notice: 'Model was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @model }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @model.errors, status: :unprocessable_entity }
-      end
+    if @model.save
+      redirect_to @model, notice: 'Model was successfully created.' 
+    else
+      render action: 'new' 
     end
   end
 
   def update
-    respond_to do |format|
-      if @model.update(model_params)
-        format.html { redirect_to @model, notice: 'Model was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @model.errors, status: :unprocessable_entity }
-      end
+    if @model.update(model_params)
+      redirect_to @model, notice: 'Model was successfully updated.' 
+    else
+      render action: 'edit' 
     end
   end
 
   def destroy
     @model.destroy
-    respond_to do |format|
-      format.html { redirect_to models_url }
-      format.json { head :no_content }
-    end
+    redirect_to models_url 
   end
 
   private

@@ -1,8 +1,6 @@
 Kolesa::Application.routes.draw do
 
-  resources :models
-
-  resources :brands
+  resources :brands, :models 
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
