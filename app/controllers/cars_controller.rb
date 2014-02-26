@@ -43,7 +43,7 @@ class CarsController < ApplicationController
   # ajax 
   def models
   	@models = Model.where(brand_id: params[:brand_id])
-  	@tag = params[:span]
+  	@tag = params[:tag]
   	render layout: false
   end
 
