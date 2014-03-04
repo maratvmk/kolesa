@@ -1,7 +1,7 @@
 class CarsController < ApplicationController
   def index
   	@search = Car.search(params[:q])
-  	@cars = @search.result.paginate(page: params[:page], per_page: 1)
+  	@cars = @search.result.paginate(page: params[:page], per_page: 4)
   end
 
   def new
