@@ -11,7 +11,6 @@ end
 
 group :production do
   gem 'pg'
-  gem 'rails_12factor'
 end
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -50,6 +49,8 @@ gem 'will_paginate'
 
 gem 'carrierwave'
 gem 'rmagick'
+gem 'fog'
+gem 'unf'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
