@@ -61,7 +61,7 @@ namespace :deploy do
     end
   end
 
-  after :deploy, "deploy:setup_config"
+  after "deploy", "deploy:setup_config"
 
   task :symlink_config do
     on roles(:app) do
@@ -69,7 +69,7 @@ namespace :deploy do
     end
   end
 
-  after "deploy:updated", "deploy:symlink_config"
+  before "deploy:assets:precompile", "deploy:symlink_config"
 
   desc "Make sure local git is in sync with remote"
   task :check_revision do
@@ -82,5 +82,5 @@ namespace :deploy do
     end
   end
 
-  before :deploy, "deploy:check_revision"
+  before "deploy", "deploy:check_revision"
 end
