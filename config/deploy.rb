@@ -14,7 +14,7 @@ set :use_sudo, false
 
 # Default value for :scm is :git
 set :scm, :git
-set :repo_url, "git@bitbucket.org:maratvmk/kolesa.git"
+set :repo_url, "git@github.com:maratvmk/kolesa.git"
 set :branch, "master"
 
 # Default value for :format is :pretty
