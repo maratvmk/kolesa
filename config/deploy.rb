@@ -14,7 +14,7 @@ set :use_sudo, false
 
 # Default value for :scm is :git
 set :scm, :git
-set :repo_url, "git@bitbucket.org:maratvmk/kolesa.git"
+set :repo_url, "git@github.com:maratvmk/kolesa.git"
 set :branch, "master"
 
 # Default value for :format is :pretty
@@ -74,8 +74,8 @@ namespace :deploy do
   desc "Make sure local git is in sync with remote"
   task :check_revision do
     on roles(:web) do
-      unless `git rev-parse HEAD` == `git rev-parse bitbucket/master`
-        info "WARNING: HEAD is not the same as bitbucket/master"
+      unless `git rev-parse HEAD` == `git rev-parse origin/master`
+        info "WARNING: HEAD is not the same as origin/master"
         info "Run `git push` to sync changes."
         exit
       end
