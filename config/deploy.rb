@@ -69,7 +69,7 @@ namespace :deploy do
     end
   end
 
-  before "deploy:assets:precompile", "deploy:symlink_config"
+  #before "deploy:assets:precompile", "deploy:symlink_config"
 
   desc "Make sure local git is in sync with remote"
   task :check_revision do
