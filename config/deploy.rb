@@ -46,15 +46,15 @@ namespace :deploy do
     desc "#{command} unicorn server"
     task command do
       on roles(:app), except: {no_release: true} do
-        execute "/etc/init.d/unicorn_#{application}", command
+        execute "/etc/init.d/unicorn_#{fetch(:application)}", command
       end
     end
   end
 
   task :setup_config do
     on roles(:app) do
-      sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
-      sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
+      sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
+      sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{fetch(:application)}"
       execute "mkdir -p #{shared_path}/config"
       put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
       info "Now edit the config files in #{shared_path}."
@@ -74,8 +74,8 @@ namespace :deploy do
   desc "Make sure local git is in sync with remote"
   task :check_revision do
     on roles(:web) do
-      unless `git rev-parse HEAD` == `git rev-parse bitbucket/master`
-        info "WARNING: HEAD is not the same as bitbucket/master"
+      unless `git rev-parse HEAD` == `git rev-parse origin/master`
+        info "WARNING: HEAD is not the same as origin/master"
         info "Run `git push` to sync changes."
         exit
       end
