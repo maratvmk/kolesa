@@ -23,6 +23,6 @@ production:
   encoding: unicode
   database: automobi_production
   pool: 5
-  username: automobi
+  username: postgres
   password:
 
