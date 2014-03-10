@@ -17,8 +17,6 @@ set :scm, :git
 set :repo_url, "git@bitbucket.org:maratvmk/kolesa.git"
 set :branch, "master"
 
-default_run_options[:pty] = true
-
 # Default value for :format is :pretty
 # set :format, :pretty
 
@@ -63,7 +61,7 @@ namespace :deploy do
     end
   end
 
-  after "deploy:setup", "deploy:setup_config"
+  after :deploy, "deploy:setup_config"
 
   task :symlink_config do
     on roles(:app) do
@@ -71,7 +69,7 @@ namespace :deploy do
     end
   end
 
-  after "deploy:finalize_update", "deploy:symlink_config"
+  after "deploy:updated", "deploy:symlink_config"
 
   desc "Make sure local git is in sync with remote"
   task :check_revision do
