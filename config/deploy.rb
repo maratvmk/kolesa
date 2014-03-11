@@ -55,9 +55,9 @@ namespace :deploy do
     on roles(:app) do
       sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
       sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{fetch(:application)}"
-      execute "mkdir -p #{shared_path}/config"
-      put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
-      info "Now edit the config files in #{shared_path}."
+      #execute "mkdir -p #{shared_path}/config"
+      #put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
+      #info "Now edit the config files in #{shared_path}."
     end
   end
 
@@ -65,11 +65,11 @@ namespace :deploy do
 
   task :symlink_config do
     on roles(:app) do
-      execute "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+      execute "ln -nfs /home/deployer/apps/automobi/db/database.yml #{release_path}/config/database.yml"
     end
   end
 
-  #before "deploy:assets:precompile", "deploy:symlink_config"
+  before "deploy:assets:precompile", "deploy:symlink_config"
 
   desc "Make sure local git is in sync with remote"
   task :check_revision do
