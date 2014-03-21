@@ -9,7 +9,6 @@ set :user, :deployer
 
 # Default deploy_to directory is /var/www/my_app
 set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
-set :deploy_via, :remote_cache
 set :use_sudo, false
 
 # Default value for :scm is :git
@@ -36,7 +35,7 @@ set :pty, true
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-# set :keep_releases, 5
+set :keep_releases, 5
 
 after :deploy, "deploy:cleanup"
 
@@ -51,6 +50,7 @@ namespace :deploy do
     end
   end
 
+=begin
   task :setup_config do
     on roles(:app) do
       sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
@@ -62,6 +62,7 @@ namespace :deploy do
   end
 
   after "deploy", "deploy:setup_config"
+=end
 
   task :symlink_config do
     on roles(:app) do

@@ -5,3 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+City.create!([{name: 'Астана'},
+	{name: 'Алматы'},
+	{name: 'Актау'},
+	{name: 'Актобе'},
+	{name: 'Атырау'},
+	{name: 'Костанай'},
+	{name: 'Петропавлоск'},
+	{name: 'Павлодар'},
+	{name: 'Семей'},
+	{name: 'Караганда'},
+	{name: 'Усть-Каменогорск'},
+	{name: 'Тараз'},
+	{name: 'Шымкент'},
+	{name: 'Кызылорда'}])

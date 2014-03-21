@@ -42,6 +42,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 
 gem 'twitter-bootstrap-rails'
+gem 'backbone-on-rails'
 
 gem 'devise'
 gem 'ransack'
