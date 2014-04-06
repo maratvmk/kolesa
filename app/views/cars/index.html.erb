@@ -9,22 +9,27 @@
 				<tr>
 					<td>
 						<div id="brand">
-							<strong><a href="" style="border-bottom: 1px dotted #0066CC; color:#0066CC;">Марка</a></strong>
-							<% Brand.all.each do |b| %>
-								<span data-id=<%= b.id %> 
-								style="margin: 7px; border-bottom: 1px dotted #0066CC; color: #0066CC;">
-									<%= b.name %>
+							<strong>Марка</strong>
+							
+							<% Brand.all.each do |brand| %>
+								<span data-id=<%= brand.id %>>
+									<%= brand.name %>
 								</span>
 							<% end %>
+
 						</div><br/><br/>
+
 						<div id="model">
-							<strong><a href="" style="border-bottom: 1px dotted #0066CC; color:#0066CC;">Модель</a></strong>
+							<strong>Модель</strong>
 							<div style="display: inline;"></div>
-						</div><br/><br/>
+						</div>
+						<br/><br/>
+
 						<div id="city">
-							<strong><a href="" style="border-bottom: 1px dotted #0066CC; color:#0066CC;">Где искать</a></strong>
+							<strong>Где искать</strong>
+
 							<% City.all.each do |c| %>
-								<span data-id=<%= c.id %> style="margin: 7px; display:inline; border-bottom: 1px dotted #0066CC; color:#0066CC;" >
+								<span data-id=<%= c.id %>>
 									<%= c.name %>
 								</span>
 							<% end %>
@@ -34,20 +39,28 @@
 			</tbody>
 		</table>
 	</div>
+
 	<div class="span4">
 		<%= search_form_for @search do |f| %>
 		  <%= f.hidden_field :brand_id_eq %>
 		  <%= f.hidden_field :model_id_eq %>
 		  <%= f.hidden_field :city_id_eq %>
 
-		  <%= f.label :price %>
-		  <%= f.text_field :price_gteq, style: "width:60px;height:14px;" %> —
-		  <%= f.text_field :price_lteq, style: "width:60px;height:14px;" %> $
+		  <div>
+			  <%= f.label :price_gteq, "Цена", style: "font-weight: bold" %>
+			  <%= f.text_field :price_gteq, style: "width:70px" %>
+			  <%= sign("—") %>
+			  <%= f.text_field :price_lteq, style: "width:70px" %>
+			  <%= sign("$") %>
+			</div>
+			<br/><br/>
 
-		  <%= f.label :year %>
-		  <%= f.text_field :year_gteq, style: "width:50px;height:14px;" %> —
-		  <%= f.text_field :year_lteq, style: "width:50px;height:14px;" %>
+		  <%= f.label :year_gteq, "Год производства", style: "font-weight: bold" %>
+		  <%= f.text_field :year_gteq, style: "width:60px" %>
+		  <%= sign("—") %>
+		  <%= f.text_field :year_lteq, style: "width:60px" %>
 		  <br/><br/><br/>
+
 		  <%= f.submit 'Найти' %>
 		<% end %>		
 	</div>

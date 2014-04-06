@@ -18,10 +18,10 @@ class BrandsControllerTest < ActionController::TestCase
 
   test "should create brand" do
     assert_difference('Brand.count') do
-      post :create, brand: { name: @brand.name, symbol: @brand.symbol }
+      Brand.create(name: @brand.name, symbol: @brand.symbol)
     end
 
-    assert_redirected_to brand_path(assigns(:brand))
+    assert_redirected_to brand_path(Brand.first)
   end
 
   test "should show brand" do

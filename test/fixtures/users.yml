@@ -3,7 +3,9 @@
 one:
   avatar: MyString
   phone: MyString
+  email: "mara@mail.ru"
 
 two:
   avatar: MyString
   phone: MyString
+  email: "maratvmk@mail.ru"
