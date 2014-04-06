@@ -2,6 +2,7 @@ require 'test_helper'
 
 class BrandsControllerTest < ActionController::TestCase
   setup do
+    request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials('maro', 'maro')
     @brand = brands(:one)
   end
 
@@ -18,10 +19,10 @@ class BrandsControllerTest < ActionController::TestCase
 
   test "should create brand" do
     assert_difference('Brand.count') do
-      Brand.create(name: @brand.name, symbol: @brand.symbol)
+       post :create, brand: { name: @brand.name, symbol: @brand.symbol }
     end
 
-    assert_redirected_to brand_path(Brand.first)
+    assert_redirected_to brand_path(assigns(:brand))
   end
 
   test "should show brand" do

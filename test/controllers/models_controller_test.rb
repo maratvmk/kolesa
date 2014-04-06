@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ModelsControllerTest < ActionController::TestCase
   setup do
+    request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials('maro', 'maro')
     @model = models(:one)
   end
 

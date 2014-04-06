@@ -8,7 +8,7 @@ class ColorTest < ActiveSupport::TestCase
   end
 
   test "should save color with name" do
-  	color = Color.new(name: "Yellow")
+  	color = Color.new(name: 'Red')
   	assert color.save
   end
 
