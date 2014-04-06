@@ -43,10 +43,12 @@
 			</div>
 			<br/><br/>
 
-		  <%= f.label :year_gteq, "Год производства", style: "font-weight: bold" %>
-		  <%= f.text_field :year_gteq, style: "width:60px" %>
-		  <%= sign("—") %>
-		  <%= f.text_field :year_lteq, style: "width:60px" %>
+			<div>
+			  <%= f.label :year_gteq, "Год производства", style: "font-weight: bold" %>
+			  <%= f.text_field :year_gteq, style: "width:60px" %>
+			  <%= sign("—") %>
+			  <%= f.text_field :year_lteq, style: "width:60px" %>
+			</div>
 		  <br/><br/><br/>
 
 		  <%= f.submit 'Найти' %>
@@ -61,6 +63,7 @@
 				<%= image_tag car.car_images[0].image_url(:small) %>
 			</a>
 		</div>
+
 		<div class="span6">
 			<p><b>
 				<a href=<%= car_path(car) %>><%= car.brand.name %> <%= car.model.name %></a>

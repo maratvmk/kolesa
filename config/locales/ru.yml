@@ -21,7 +21,14 @@
 
 ru:
   hello: "Привет"
-	activerecord:
-		attributes:
-			post:
-				cost: "Total cost"
+  activerecord:
+    models:
+        model: "Модель"
+        brand: "Марка"
+    attributes:
+        brand:
+            name: "Имя"
+            symbol: "Символ"
+        model:
+            name: "Имя"
+            brand_id: "Марка"
