@@ -1,6 +1,5 @@
 <h1>КОЛЁСА</h1>
-
-<br>
+<br/>
 
 <div class="row" style="background-color: #FAE8BB; padding: 20px;">
 	<div class="span7">
@@ -10,13 +9,7 @@
 					<td>
 						<div id="brand">
 							<strong>Марка</strong>
-							
-							<% Brand.all.each do |brand| %>
-								<span data-id=<%= brand.id %>>
-									<%= brand.name %>
-								</span>
-							<% end %>
-
+							<%= render partial: "models_list", locals: { objects: Brand.all } %>
 						</div><br/><br/>
 
 						<div id="model">
@@ -27,12 +20,7 @@
 
 						<div id="city">
 							<strong>Где искать</strong>
-
-							<% City.all.each do |c| %>
-								<span data-id=<%= c.id %>>
-									<%= c.name %>
-								</span>
-							<% end %>
+							<%= render partial: "models_list", locals: { objects: City.all } %>
 						</div>
 					</td>
 				</tr>
