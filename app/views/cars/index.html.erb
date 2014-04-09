@@ -60,7 +60,7 @@
 <div class="row" style="margin-bottom: 15px;">
 		<div class="span2">
 			<a href=<%= car_path(car) %>>
-				<%= image_tag car.car_images[0].image_url(:small) %>
+				<%= image_tag car.car_images[0].image_url(:small) unless car.car_images.blank? %>
 			</a>
 		</div>
 

@@ -42,11 +42,11 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 
 gem 'twitter-bootstrap-rails'
-gem 'backbone-on-rails'
 
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise'
 gem 'ransack'
-gem 'will_paginate'
+gem 'will_paginate', ">=3.0.pre2"
 
 gem 'carrierwave'
 gem 'rmagick'

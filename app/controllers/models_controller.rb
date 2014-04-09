@@ -1,6 +1,5 @@
 class ModelsController < ApplicationController
   before_action :set_model, only: [:show, :edit, :update, :destroy]
-  http_basic_authenticate_with name: "maro", password: "maro"
 
   def index
     @models = Model.all

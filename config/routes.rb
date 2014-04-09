@@ -1,6 +1,9 @@
 Kolesa::Application.routes.draw do
 
-  resources :brands, :models 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
+  resources :brands, :models
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

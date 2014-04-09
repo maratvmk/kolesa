@@ -4,6 +4,7 @@ class BrandsControllerTest < ActionController::TestCase
   setup do
     request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials('maro', 'maro')
     @brand = brands(:one)
+    @brand2 = brands(:two)
   end
 
   test "should get index" do
@@ -36,7 +37,7 @@ class BrandsControllerTest < ActionController::TestCase
   end
 
   test "should update brand" do
-    patch :update, id: @brand, brand: { name: @brand.name, symbol: @brand.symbol }
+    patch :update, id: @brand, brand: { name: @brand2.name, symbol: @brand2.symbol }
     assert_redirected_to brand_path(assigns(:brand))
   end
 

@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 ru:
+  time:
+    formats:
+      long: "%d.%m.%Y"
   hello: "Привет"
   activerecord:
     models:
