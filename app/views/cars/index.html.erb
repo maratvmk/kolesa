@@ -80,7 +80,7 @@
 				<%= car.state %>, 
 				<%= car.milage %> км, 
 				<%= car.color.name %>, 
-				<%= car.description %>
+				<%= truncate(car.description, length: 100) %>
 				<br/>
 				<%= car.city.name %>
 			</p>
