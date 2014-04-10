@@ -10,7 +10,7 @@
 	<div class="container">
 		<div class="row">
 			<%= flash[:notice] %>
-			<div id="user_nav">
+			<div id="user_nav" style="text-align:right;">
 			  <% if user_signed_in? %>
 			    Вы вошли в сайт как <b><%= current_user.email %></b>.
 			    <%= link_to "Выйти", destroy_user_session_path, :method => :delete %>

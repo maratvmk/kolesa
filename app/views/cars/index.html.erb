@@ -80,12 +80,12 @@
 				<%= car.state %>, 
 				<%= car.milage %> км, 
 				<%= car.color.name %>, 
-				<%= truncate(car.description, length: 50) %>
+				<%= truncate(car.description, length: 200) %>
 				<br/>
 				<%= car.city.name %>
 			</p>
 		</div>
-</div>
+</div><br/>
 <% end %>
 
 <%= will_paginate(@cars) %>

@@ -22,6 +22,7 @@ ready = ->
 		$('#brand span[data-id=' + $('#q_brand_id_eq').val() + ']').css('border-bottom', '1px dotted #0066CC').css('padding', '0').css('background-color', '#FAE8BB')
 		$(this).css('background-color', '#FFCC33').css('border', 'none').css('padding', '4px')
 		$('#q_brand_id_eq').val $(this).attr('data-id')
+		$('#q_model_id_eq').val('') 
 		$.ajax
 		  url: "/cars/models"
 		  data: { brand_id: $('#q_brand_id_eq').val(), tag: 'span' }
